@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  front:
+    image: app-development
+    build:
+      context: .
+      dockerfile: ./docker/app/development/Dockerfile
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - WATCHPACK_POLLING=true
+    command: [sh, -c, yarn install;yarn run dev]
+
+networks:
+  default:
+    name: next

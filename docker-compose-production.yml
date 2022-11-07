@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  front:
+    image: app-production
+    build:
+      context: .
+      dockerfile: ./docker/app/production/Dockerfile
+    ports:
+      - "3000:3000"
+
+networks:
+  default:
+    name: next
